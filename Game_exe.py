@@ -74,6 +74,8 @@ class App(tk.Tk):
         self.matrix2 = random_playboard()
         self.ship_symbols = ['A', 'B', 'C', 'F']
 
+        self.hits = 0
+
     # commands
     def exit(self):
         sys.exit()
@@ -106,15 +108,16 @@ class App(tk.Tk):
             self.shots_text = 'Shots: ' + str(self.shots)
             self.shots_display.set(self.shots_text)
             if self.matrix2[x][y] == "A":
-                self.message.set("Hit. It's an aircraft carrier!")
+                self.message.set("Hit. It's an aircraft carrier! (5)")
             if self.matrix2[x][y] == "B":
-                self.message.set("Hit. It's a battleship!")
+                self.message.set("Hit. It's a battleship! (4)")
             if self.matrix2[x][y] == "C":
-                self.message.set("Hit. It's a cruiser!")
+                self.message.set("Hit. It's a cruiser! (3)")
             if self.matrix2[x][y] == "F":
-                self.message.set("Hit. It's a fregate!")
+                self.message.set("Hit. It's a fregate! (2)")
             self.matrix2[x][y] = 'X'
             self.matrix[x][y].config(text='X', background='red', cursor='pirate')
+            self.hits_check()
 
         elif self.matrix2[x][y] == 'X':
             self.message.set("You already check this place!")
@@ -124,7 +127,11 @@ class App(tk.Tk):
             for j in range(10):
                 self.matrix[i][j] = Button(self.frame_3, width=4, height=2, command=lambda x1=i, y1=j: self.button_press(x1, y1))
                 self.matrix[i][j].grid(row=i + 1, column=j + 1)
-
+    def hits_check(self):
+        self.hits += 1
+        if self.hits == 26:
+            self.frame_3.destroy()
+            self.message.set("You Win!")
 if __name__ == '__main__':
     app = App()
     app.mainloop()
