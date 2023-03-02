@@ -15,7 +15,7 @@ class App(tk.Tk):
         self.config(menu=self.menu)
         self.game_menu = Menu(self.menu)
         self.menu.add_cascade(label="Game", menu=self.game_menu)
-        self.game_menu.add_command(label="New Game")
+        self.game_menu.add_command(label="New Game", command=self.restart)
         self.game_menu.add_command(label="Help")
         self.game_menu.add_separator()
         self.game_menu.add_command(label='Exit', command=exit)
@@ -141,8 +141,15 @@ class App(tk.Tk):
         self.hits += 1
         if self.hits == 26: #max = 26
             self.frame_3.destroy()
-            self.message.set("You Win!")
+            self.message.set("You Win! Play again?")
             self.frame_4.pack()
+
+    def restart(self):
+        self.message.set("Let's start!")
+
+
+
+
 if __name__ == '__main__':
     app = App()
     app.mainloop()
