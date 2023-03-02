@@ -80,7 +80,7 @@ class App(tk.Tk):
         self.frame_4 = Frame(self)
 
             # Yes button
-        self.yes_button = Button(self.frame_4, text= 'YES')
+        self.yes_button = Button(self.frame_4, text= 'YES', command=self.restart)
         self.yes_button.grid(row=0, column =0)
             # No button
         self.no_button = Button(self.frame_4, text= 'NO', command= self.exit)
@@ -146,6 +146,10 @@ class App(tk.Tk):
 
     def restart(self):
         self.message.set("Let's start!")
+        self.shots = 0
+        self.shots_text = 'Shots: ' + str(self.shots)
+        self.shots_display.set(self.shots_text)
+        self.hits = 0
         self.matrix2 = random_playboard()
         self.button_matrix_generator()
 
