@@ -146,7 +146,8 @@ class App(tk.Tk):
 
     def restart(self):
         self.message.set("Let's start!")
-
+        self.matrix2 = random_playboard()
+        self.button_matrix_generator()
 
 
 
