@@ -76,6 +76,16 @@ class App(tk.Tk):
 
         self.hits = 0
 
+        # Frame 4 - endgame
+        self.frame_4 = Frame(self)
+
+            # Yes button
+        self.yes_button = Button(self.frame_4, text= 'YES')
+        self.yes_button.grid(row=0, column =0)
+            # No button
+        self.no_button = Button(self.frame_4, text= 'NO', command= self.exit)
+        self.no_button.grid(row=0, column=1)
+
     # commands
     def exit(self):
         sys.exit()
@@ -129,9 +139,10 @@ class App(tk.Tk):
                 self.matrix[i][j].grid(row=i + 1, column=j + 1)
     def hits_check(self):
         self.hits += 1
-        if self.hits == 26:
+        if self.hits == 26: #max = 26
             self.frame_3.destroy()
             self.message.set("You Win!")
+            self.frame_4.pack()
 if __name__ == '__main__':
     app = App()
     app.mainloop()
