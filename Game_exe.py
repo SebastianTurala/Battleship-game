@@ -16,7 +16,7 @@ class App(tk.Tk):
         self.game_menu = Menu(self.menu)
         self.menu.add_cascade(label="Game", menu=self.game_menu)
         self.game_menu.add_command(label="New Game", command=self.restart)
-        self.game_menu.add_command(label="Help")
+        self.game_menu.add_command(label="Help", command=self.help_menu)
         self.game_menu.add_separator()
         self.game_menu.add_command(label='Exit', command=exit)
 
@@ -89,6 +89,14 @@ class App(tk.Tk):
     # commands
     def exit(self):
         sys.exit()
+
+    def help_menu(self):
+        window = Tk()
+        window.title("Help")
+        help_text = open('help.txt', 'r')
+        help_label = Label(window, text= help_text.read())
+        help_label.pack()
+        window.mainloop()
 
     def play_button(self):
         self.play_button.destroy()
