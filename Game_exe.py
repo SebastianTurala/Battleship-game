@@ -25,7 +25,7 @@ class App(tk.Tk):
         self.frame_1.pack()
 
             # image
-        self.photo = PhotoImage(file=r"C:\Users\sebas\Desktop\Sea2.png")
+        self.photo = PhotoImage(file="Sea2.png")
         self.photo_label = Label(self.frame_1, image=self.photo)
         self.photo_label.pack()
 
