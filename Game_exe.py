@@ -146,6 +146,10 @@ class App(tk.Tk):
 
     def restart(self):
         self.message.set("Let's start!")
+        self.frame_3.destroy()
+        self.frame_3 = Frame(self)
+        self.frame_3.pack()
+        self.border_generator()
         self.shots = 0
         self.shots_text = 'Shots: ' + str(self.shots)
         self.shots_display.set(self.shots_text)
