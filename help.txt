@@ -1,0 +1,5 @@
+In this game are 4 types of ships:
+1 Aircraft - 5 hit points
+2 Battleships - 4 hit points
+3 Cruisers - 3 hit points
+2 Fregates - 2  hit points
